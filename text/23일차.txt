@@ -1,0 +1,443 @@
+﻿﻿ 변수
+  - 문제를 해결하기 위해 알맞은 변수를 선언할 수 있다.
+  - 자료형 
+  - 자료형변환
+    - 자동 : 정수->실수, 작은바이트->큰바이트
+    - 명시적 : 자동 형변환이 안되는 경우와 자동형변환이 가능하지만 
+                 의도적으로 자료형변환이 필요한 경우(나누기)
+  - 일반변수, 참조변수, 객체변수, 클래스변수
+     일반변수 : 자료형으로 이루어진 변수
+     참조변수 : 일반변수 아닌 변수로 주소를 저장
+     객체변수 : 클래스의 멤버 변수로, static이 붙지 않은 변수, 객체 생성 후 
+                   사용 가능
+     클래스변수 : 클래스의 멤버 변수로, static이 붙는 변수, 객체 생성없이 
+                      사용 가능
+ 연산자      
+ - 연산자 종류를 알고, 그 결과를 예측할 수 있다
+ - 산술연산자
+   - % : 나머지를 구하는 연산자. 나누었을 때 나머지 => %
+   - / : 정수 / 정수 => 정수, 자료형변환이 필요하다
+ - 증감연산자 : ++, --, 최종적으로 1증가 또는 1감소
+   - 전위형 : 증가하고 동작
+   - 후위형 : 동작하고 증가
+ - 대입연산자 : =
+   - 오른쪽에 있는 값을 왼쪽에 저장
+   - 형변환이 가능할때만 =을 쓸 수 있다.
+   - 아래 코드에서 자동 형변환이 되기 위한 조건
+      - 클래스 A가 클래스 B에게 상속받은 경우
+        : 객체 a는 자식 클래스의 객체이고 b는 부모 클래스의 객체이므로
+         자식->부모로 변하는 경우이기 때문에 자동 형변환이 가능하다
+A a = new A();
+B b = a;
+ - 비교연산자 : ==와 =을 착각하면 안됨
+ - 논리연산자 : &&와 ||을 정확히 구분할 수 있어야한다
+   && : ~하고
+   || : ~이거나
+
+ 조건문
+  - ~하면 ...한다라는 표현이 되는 상황을 조건문으로 나타낼 수 있다.
+  - if문 : 모든 조건문은 if문으로 표현할 수 있다.
+  - 주의사항
+  if(조건식); {
+	실행문;
+  }
+  else(조건식){
+	실행문;
+  }
+  - switch문
+   1. 사용되는 변수의 값이 제한적일 때
+   2. 사용되는 식의 값이 제한적일 때
+
+ 반복문
+ - 규칙성 있게 반복되는 작업을 할 때 사용
+ - for문, while문
+ - do while문 : 무조건 1번은 실행
+ - 반복문 유의사항
+  - 무한루프에 빠지지 않게 조심하자.
+ - 반복문은 실행순서를 따져볼수 있어야한다.
+
+ 클래스
+ - 데이터를 효율적으로 관리하기 위한 클래스를 생성할 수 있다
+ - 멤버변수, 멤버메소드, 생성자
+ - 생성자 : 이름이 클래스명과 동일, 리턴타입 x, 주로 멤버변수 초기화
+ - 메소드 : (하나의) 기능을 하도록 모아놓은 코드
+ - 리턴타입, 매개변수, 메소드명
+ - 메소드 오버로딩 : 동일한 이름을 가진 메소드가 여러개 있는 경우
+                           매개변수가 달라야 한다.
+ - getter와 setter : 멤버 변수의 값을 설정하거나 가져오는 메소드
+
+ 상속
+ - 부모클래스를 물려 받는 것
+ - 오버라이딩 : 부모 클래스에 있는 메소드를 재정의하는 것
+ - 제어자 
+   - static : 클래스 xx
+   - final : 상수
+     클래스 : 부모가 될 수 없다=>상속할 수 없다
+     메소드 : 오버라이딩이 불가능
+     변수 : 상수
+   - 접근제한자 : public, protected, default, private
+   - abtract : 추상
+ - 추상메소드 : 메소드의 구현부가 없는 메소드 
+   => 객체를 만들려면 추상 메소드를 정의 해야한다. =>오버라이딩
+ - 인터페이스 : 상수와 추상메소드로만 이루어진 것
+   - 기능 요약으로 어떠한 기능들이 필요한지 나열해 놓은 것
+   - 협업할 때 작업하기가 용이하다
+
+ 예외처리 : Exception
+ - try~catch문 : 예외를 처리
+ - throw : 예외를 발생
+
+ 컬렉션프레임워크
+ - Collection(List, Set), Map
+ - List : 순서 보장, 중복 가능
+ - Set : 순서 X, 중복 불가능
+ - Map : key(중복 불가), value(중복 가능), 순서 x
+
+ 열거형 : enum => 데이터의 값이 제한적이어서 값들을 상수로 취급해서 
+            사용하고 싶을때 씀
+
+ 지네릭스 : 클래스의 멤버변수의 자료형을 미리 설정하지 않은 클래스
+               객체가 생성될 때 멤버 변수의 자료형이 결정
+  - 컬렉션프레임워크에서 많이 사용
+
+
+■열거형 예제---------------------------------------------------------------------------
+package day23;
+
+import java.util.Scanner;
+
+public class EnumEx1 {
+
+	public static void main(String[] args) {
+		/* p.691 열거형 : 서로 관련된 상수를 편리하게 선언하기 위한 것.
+		 * 열거형.valueOf(문자열) : 문자열을 열거형으로 변환
+		 * 열거형.values() : 열거형에 있는 모든 값들 각가을 하나의 열거형으로 만들어서 배열을
+		 *                 생성 
+		*/
+		Type t = null;
+		Scanner scan = new Scanner(System.in);
+		String type;
+		do {
+			System.out.println("분류 리스트");
+			for(Type tmp : Type.values()) {
+				System.out.print(tmp + ", ");
+			}
+			System.out.println();
+			System.out.print("분류를 입력하세요 : ");
+			type = scan.next();
+
+			for(Type tmp : Type.values()) {
+				if(tmp.toString().equals(type)) {
+					t = Type.valueOf(type);
+				}
+			}
+		}while(t == null);
+		System.out.println(t);
+		scan.close();
+	}
+}
+enum Type{
+	통신비, 식비, 교통비, 월세, 주거비
+} 
+
+■ 지네릭스 예제---------------------------------------------------------------------------
+package day23;
+
+public class GenericsEx1 {
+	/* p.670 지네릭스 : 클래스(A) 안의 멤버 변수의 클래스(B)를 미리 지정해 놓지 않고, 
+	 *               클래스(A)를 생성할 때 결정해주는 것
+	 * */
+	public static void main(String[] args) {
+		Student<Double> s = new Student<Double>();
+		s.kor = 10.0;
+		System.out.println(s.kor);
+	}
+}
+class Student<A>{
+	String name;
+	A kor;
+	A eng;
+	A math;	
+}
+
+■ List 문제---------------------------------------------------------------------------
+package day23;
+
+import java.util.*;
+
+public class ListTest1 {
+
+	public static void main(String[] args) {
+		/*  - 정수 5개를 입력받아 리스트에 저장하고, 저장된 값들의 합과 평균을 구하는 코드를
+		 *    작성하세요.
+		 *  - 합과 평균을 메소드를 이용하여 확인하도록 코드를 작성하세요.
+		 *  - Iterator를 이용하여 작성하세요.
+		 */
+		/* List는 지네릭스 클래스이기 때문에 <>안에 클래스 명을 넣어주어야 하고,
+		 * int는 클래스가 아니기 때문에 int의 래퍼 클래스인 Integer를 넣어줌
+		 * 인터페이스인 List는 List 인터페이스를 구현한 ArrayList 클래스의 객체를 
+		 * 저장할 수 있다.
+		 * 추상메소드와 상수로만 이루어진 것을 인터페이스라 한다.
+		 * 추상메소드란 메소드의 선언부만 있고, 구현부가 없는 메소드
+		 * 생성자에 추가한 5는 리스트의 size()가 아닌 용량을 의미한다.
+		 * 리스트의 size() 메소드는 현재 저장된 객체의 갯수
+		 * 리스트 안에는 배열로 되어 있는데, 이때 만들어진 배열의 크기가 용량이다.
+		 */
+		List<Integer> list = new ArrayList<Integer>(5);
+		//List는 인터페이스이기 때문에 객체를 생성할 수 없다
+		//List<Integer> list2 = new List<Integer>();
+		int size = 5;
+		Scanner scan = new Scanner(System.in);
+		for(int i=0; i<size; i++) {
+			/* 정수를 입력받아 tmp에 저장한 후 리스트의 add 메소드를 이용하여 추가하는데
+			 * 이 때 정수 tmp를 Integer 클래스의 객체로 변환하여 저장한다.(오토박싱/언박싱)
+			 * */
+			int tmp = scan.nextInt();
+			list.add(tmp);
+		}
+
+		int sum = 0;
+		double avg = 0.0;
+		Iterator<Integer> it = list.iterator();
+		while(it.hasNext()) {
+			/* Iterator를 생성할 때 Iterator의 <>를 입력을 안하면 Object가 자동으로
+			 * 들어가고, 그렇게 되면 it.next()를 통해 가져오는 정보의 클래스도 Object가
+			 * 되기 때문에 형 변환이 필요 */
+			Integer tmp = it.next();
+			/* 래퍼 클래스를 이용할 때 주의할 사항
+			 * int는 정수형을 저장하고, Integer 클래스는 정수형과 null을 저장한다.
+			 * 따라서 Integer의 객체를 int로 저장하는 경우 Integer의 객체가 null인지
+			 * 아닌지 판단할 필요가 있다. */
+			if(tmp != null)
+				sum += tmp;
+		}
+		avg = (double) sum / list.size();
+		sum = sum(list);
+		avg = avg(list);
+		System.out.println(sum);
+		System.out.println(avg);
+		scan.close();
+	}
+	public static int sum(List<Integer> list) {
+		int sum = 0;
+		Iterator<Integer> it = list.iterator();
+		while(it.hasNext()) {
+			Integer tmp = it.next();
+			if(tmp != null)
+				sum += tmp;
+		}
+		return sum;
+	}
+	public static double avg(List<Integer> list) {
+		return (double)sum(list)/list.size();
+	}
+}
+
+■ Set문제---------------------------------------------------------------------------
+package day23;
+
+import java.util.*;
+public class SetTest1 {
+
+	public static void main(String[] args) {
+		/* 중복되지 않는 정수 5개를 Set에 저장하고, 저장된 값의 합과 평균을 구하세요. 
+		 * */
+		Set<Integer> set = new HashSet<Integer>();
+		int size = 5;
+		Scanner scan = new Scanner(System.in);
+		/* 문제에서 정수 5개를 입력받는게 아니라 중복되지 않은 정수 5개를 입력받아야 하기 때문에
+		 * 반복 횟수는 5번으로 고정된 것이 아니라 Set에 5개가 저장될때 까지 반복해야 한다.
+		 * */
+		for( ; set.size() < size ; ) {
+			//int tmp = scan.nextInt();
+			//set.add(tmp);
+			set.add(scan.nextInt());
+		}
+		int sum = sum(set);
+		System.out.println(sum);
+		double avg = (double)sum / set.size();
+		System.out.println(avg);
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(1);	
+		list.add(2);
+		System.out.println(sum(list));
+	}
+	/* 아래 sum 메소드는 매개변수가 Collection 인터페이스를 구현한 모든 객체이기 때문에
+	 * Set이 와도 가능하고, List가 와도 가능합니다. 즉, 재사용성이 높아지게 된다.
+	 * */
+	public static int sum(Collection<Integer> c) {
+		Iterator<Integer> it = c.iterator();
+		int sum = 0;
+		while(it.hasNext()) {
+			Integer tmp = it.next();
+			//실행
+			if(tmp != null)
+				sum += tmp;
+		}
+		return sum;
+	}
+
+}
+
+■ Date 클래스 예제---------------------------------------------------------------------------
+package day23;
+
+import java.util.*;import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
+
+public class DateEx1 {
+
+	public static void main(String[] args) {
+		Calendar date = Calendar.getInstance();
+		//month - the value used to set the MONTH calendar field.
+		//Month value is 0-based. e.g., 0 for January.
+		//달은 0~11까지 입력하기 때문에 5월을 입력하려면 4로 입력하거나 Calendar.MAY를 입력
+		//Calendar.MAY는 상수 4를 의미
+		date.set(2020, Calendar.MAY, 5);
+		System.out.println(toString(date));
+		date.add(Calendar.DATE, -14);
+		//date.add(5, -14);
+		System.out.println(toString(date));
+		date.add(Calendar.DATE, 14);
+		System.out.println(toString(date));
+		date.add(Calendar.MONTH, 1);
+		System.out.println(toString(date));
+	}
+	public static String toString(Calendar date) {
+		return date.get(Calendar.YEAR)+"-" + 
+				((date.get(Calendar.MONTH)+1)<10?"0":"") +
+				(date.get(Calendar.MONTH)+1)+"-"+
+				((date.get(Calendar.DATE))<10?"0":"") +
+				date.get(Calendar.DATE);
+	}
+}
+
+-------------------------------------------------------------------------------------------
+package day23;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class DateEx2 {
+
+	/* p.545
+	 * 날짜를 내가 지정한 형태의 문자열로 변환하는 코드 
+	 * 2020년 5월 25일
+	 * 2020-05-25*/
+	public static void main(String[] args) {
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
+		System.out.println(format.format(today));
+		format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		System.out.println(format.format(today));
+	}
+
+}
+
+-------------------------------------------------------------------------------------------
+package day23;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class DateEx3 {
+
+	/* p.546
+	 * 날짜를 내가 지정한 형태의 문자열로 변환하는 코드 
+	 * 2020년 5월 25일
+	 * 2020-05-25*/
+	public static void main(String[] args) {
+		Calendar date = Calendar.getInstance();
+		date.add(Calendar.DATE, -7);
+
+		Date today = date.getTime();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy년 MM월 dd일");
+		System.out.println(format.format(today));
+		format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		System.out.println(format.format(today));
+	}
+
+}
+
+-------------------------------------------------------------------------------------------
+
+package day23;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateEx4 {
+
+	/* 문자열을 Date로 변환하는 코드 */
+	public static void main(String[] args) {
+		String strDate = "2020-05-25 15:24:10";
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			Date date = format.parse(strDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
+
+■ Map 문제---------------------------------------------------------------------------
+package day23;
+import java.util.*;
+public class MapTest1 {
+
+	public static void main(String[] args) {
+		/* 카페 등급을 프로튼에서 요청을 하면 서버에서 해당 카페 등급에 맞는 카페 리스트와
+		 * 카페 등급을 프론트로 보내려 한다.
+		 * 이 때 카페 등급 : 정수이고, 카페 이름은 String이고, 카페 리스트는 List<String>
+		 * 이다.
+		 * */
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("cafeGrade", new Integer(1));//카페 등급이 1등급
+		List<String> list = new ArrayList<String>();
+		list.add("네이버 카페1");
+		list.add("네이버 카페2");
+		map.put("cafeList",list);
+	}
+
+}
+
+■연산자 예제---------------------------------------------------------------------------
+
+package day23;
+
+import java.util.Scanner;
+
+public class OperatorEx1 {
+
+	public static void main(String[] args) {
+		/* 정수 num가 짝수이면 true를 홀수이면 false를 출력하는 코드를 조건문 없이 작성해보세요.
+		 * 예) 4
+		 * 4는 짝수입니까? true
+		 * 예) 5
+		 * 5는 짝수입니까? false
+		 * */
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		System.out.println(num+"는 짝수입니까? " + (num % 2 ==0) );
+		System.out.println(num+"는 짝수입니까? " + (num % 2 ==0?true:false) );
+
+	}
+
+}
+
+--------------------------------------------------------------------------------------------
+package day23;
+
+public class OperatorEx2 {
+
+	public static void main(String[] args) {
+		int num = 10;
+		int res = ++num + num++ + ++num;
+		System.out.println(res);
+		int [] arr = new int [10];
+		int num2 = 5;
+		int num3 = arr[num2++];//num3에 저장되는 값은 배열 arr의 몇번지인가? 5
+	}
+}
